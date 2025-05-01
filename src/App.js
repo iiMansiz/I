@@ -10,6 +10,8 @@ function App() {
       <Routes>
         <Route path="/admin/login" element={<LoginAdmin />} />
         <Route path="/admin/dashboard" element={<DashboardAdmin />} />
+        <Route path="/admin/cabang" element={<AdminCabang />} />
+        <Route path="/admin/produk" element={<AdminProduk />} />
       </Routes>
     </Router>
   );
