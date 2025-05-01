@@ -3,6 +3,25 @@ import { useRouter } from "next/router";
 import { saveOrderToFirebase } from "@/lib/firebase/orders";
 import { getAuth } from "firebase/auth";
 
+
+const [kurir, setKurir] = useState("");
+const [ongkir, setOngkir] = useState(0);
+
+// Simulasi ongkir kurir
+const daftarKurir = [
+  { nama: "Kurir Toko (Internal)", harga: 10000 },
+  { nama: "JNE Reguler", harga: 15000 },
+  { nama: "J&T Express", harga: 14000 },
+  { nama: "Sicepat", harga: 12000 },
+  { nama: "Gojek / Grab (Instant)", harga: 20000 },
+];
+
+// Update total harga otomatis jika pilih kurir
+useEffect(() => {
+  const selected = daftarKurir.find((k) => k.nama === kurir);
+  setOngkir(selected ? selected.harga : 0);
+}, [kurir]);
+
 export default function CheckoutPage() {
   const [alamat, setAlamat] = useState("");
   const [cartItems, setCartItems] = useState([]);
