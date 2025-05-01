@@ -92,3 +92,17 @@ export default function CheckoutPage() {
     </div>
   );
 }
+
+
+
+<div>
+  <label>Pilih Kurir Pengiriman:</label>
+  <select value={kurir} onChange={(e) => setKurir(e.target.value)}>
+    <option value="">-- Pilih Kurir --</option>
+    {daftarKurir.map((k, idx) => (
+      <option key={idx} value={k.nama}>
+        {k.nama} - Rp {k.harga}
+      </option>
+    ))}
+  </select>
+</div>
