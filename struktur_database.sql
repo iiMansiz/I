@@ -37,15 +37,17 @@ CREATE TABLE IF NOT EXISTS pesanan (
   FOREIGN KEY (id_produk) REFERENCES produk(id)
 );
 
-CREATE TABLE jasa_pengiriman (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nama_pengiriman VARCHAR(100) NOT NULL,
-    biaya INT NOT NULL
-);
-CREATE TABLE metode_pembayaran (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nama_metode VARCHAR(100) NOT NULL
-);
+INSERT INTO jasa_pengiriman (nama_pengiriman, mendukung_cod) VALUES
+('JNE', TRUE),
+('J&T Express', TRUE),
+('SiCepat', TRUE),
+('POS Indonesia', FALSE);
+
+INSERT INTO metode_pembayaran (nama) VALUES 
+('Transfer Bank'),
+('E-Wallet'),
+('COD');
+
 CREATE TABLE pesanan (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_pembeli INT NOT NULL,
