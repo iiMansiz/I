@@ -36,3 +36,28 @@ CREATE TABLE IF NOT EXISTS pesanan (
   FOREIGN KEY (id_pembeli) REFERENCES pembeli(id),
   FOREIGN KEY (id_produk) REFERENCES produk(id)
 );
+
+CREATE TABLE jasa_pengiriman (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama_pengiriman VARCHAR(100) NOT NULL,
+    biaya INT NOT NULL
+);
+CREATE TABLE metode_pembayaran (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama_metode VARCHAR(100) NOT NULL
+);
+CREATE TABLE pesanan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_pembeli INT NOT NULL,
+    id_produk INT NOT NULL,
+    jumlah INT NOT NULL,
+    total INT NOT NULL,
+    id_jasa_pengiriman INT NOT NULL,
+    id_metode_pembayaran INT NOT NULL,
+    status_pembayaran ENUM('Belum Dibayar', 'Sudah Dibayar') DEFAULT 'Belum Dibayar',
+    tanggal TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_pembeli) REFERENCES pembeli(id),
+    FOREIGN KEY (id_produk) REFERENCES produk(id),
+    FOREIGN KEY (id_jasa_pengiriman) REFERENCES jasa_pengiriman(id),
+    FOREIGN KEY (id_metode_pembayaran) REFERENCES metode_pembayaran(id)
+);
